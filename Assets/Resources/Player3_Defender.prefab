@@ -405,6 +405,8 @@ GameObject:
   - component: {fileID: 4234324320405129156}
   - component: {fileID: -3562199151253072253}
   - component: {fileID: -2573509133438643099}
+  - component: {fileID: -7907440950591462838}
+  - component: {fileID: -1198980025175674984}
   m_Layer: 0
   m_Name: Player3_Defender
   m_TagString: Player
@@ -570,8 +572,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spinSpeed: 3600
-  doSpin: 0
-  playerGraphics: {fileID: 0}
+  doSpin: 1
+  playerGraphics: {fileID: 2269595061132471730}
 --- !u!114 &-3562199151253072253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,8 +591,9 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
+  observableSearch: 0
+  ObservedComponents:
+  - {fileID: -7907440950591462838}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -607,6 +610,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: {fileID: 2269595060351980992}
+--- !u!114 &-7907440950591462838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269595059983960058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2df2fc9482ebbc488b62a52e3cea6a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  synchronizeVelocity: 1
+  synchronizeAngularVelocity: 1
+  isTeleprotEnabled: 1
+  teleportIfDistanceGreaterThan: 1
+--- !u!114 &-1198980025175674984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269595059983960058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e85a64b52bb83c4ab3f6f920e34106b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinner: {fileID: 4234324320405129156}
+  spinSpeedBar_Image: {fileID: 2269595059424446845}
+  spinSpeedRatio_Txt: {fileID: 512058580104729394}
 --- !u!1 &2269595060150874238
 GameObject:
   m_ObjectHideFlags: 0

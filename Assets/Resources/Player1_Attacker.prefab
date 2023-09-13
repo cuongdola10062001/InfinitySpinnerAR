@@ -182,6 +182,8 @@ GameObject:
   - component: {fileID: 9048484841578733004}
   - component: {fileID: -3967407358331066305}
   - component: {fileID: 7699367999383147473}
+  - component: {fileID: -8276797124739611952}
+  - component: {fileID: 752253591210545320}
   m_Layer: 0
   m_Name: Player1_Attacker
   m_TagString: Player
@@ -324,8 +326,9 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
+  observableSearch: 0
+  ObservedComponents:
+  - {fileID: -8276797124739611952}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -342,6 +345,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: {fileID: 2523371896480695254}
+--- !u!114 &-8276797124739611952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523371896380985836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2df2fc9482ebbc488b62a52e3cea6a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  synchronizeVelocity: 1
+  synchronizeAngularVelocity: 1
+  isTeleprotEnabled: 1
+  teleportIfDistanceGreaterThan: 1
+--- !u!114 &752253591210545320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523371896380985836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e85a64b52bb83c4ab3f6f920e34106b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinner: {fileID: 9048484841578733004}
+  spinSpeedBar_Image: {fileID: 2523371896873197419}
+  spinSpeedRatio_Txt: {fileID: 4278660854099477796}
 --- !u!1 &2523371896480695252
 GameObject:
   m_ObjectHideFlags: 0

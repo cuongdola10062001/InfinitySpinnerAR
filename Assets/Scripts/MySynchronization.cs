@@ -19,6 +19,8 @@ public class MySynchronization : MonoBehaviour, IPunObservable
     private float _distance;
     private float _angle;
 
+    private GameObject battleArenaGameObject;
+
     void Awake()
     {
         m_rb = GetComponent<Rigidbody>();
@@ -26,6 +28,8 @@ public class MySynchronization : MonoBehaviour, IPunObservable
 
         networkedPosition = new Vector3();
         networkedRotation = new Quaternion();
+
+        battleArenaGameObject = GameObject.Find("BattleArena");
     }
 
     private void FixedUpdate()
@@ -43,7 +47,7 @@ public class MySynchronization : MonoBehaviour, IPunObservable
         {
             // Then, photoView is mine and i am the one who controls this player
             // Should send position, velocity etc. data to the other players
-            stream.SendNext(m_rb.position);
+            stream.SendNext(m_rb.position - battleArenaGameObject.transform.position);
             stream.SendNext(m_rb.rotation);
 
             if(synchronizeVelocity)
@@ -58,7 +62,7 @@ public class MySynchronization : MonoBehaviour, IPunObservable
         else
         {
             // Called on my player gameobject that exists in remote player's game
-            networkedPosition = (Vector3)stream.ReceiveNext();
+            networkedPosition = (Vector3)stream.ReceiveNext() + battleArenaGameObject.transform.position;
             networkedRotation = (Quaternion)stream.ReceiveNext();
 
             if (isTeleprotEnabled)

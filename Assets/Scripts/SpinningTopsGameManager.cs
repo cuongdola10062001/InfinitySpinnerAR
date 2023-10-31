@@ -12,13 +12,14 @@ public class SpinningTopsGameManager : MonoBehaviourPunCallbacks
     public GameObject ui_InformPanel;
     public TextMeshProUGUI ui_InformText;
     public GameObject searchForGameButton;
+    public GameObject adjust_Button;
+    public GameObject raycastCenter_Img;
 
 
     // Start is called before the first frame update
     void Start()
     {
         ui_InformPanel.SetActive(true);
-        ui_InformText.text = "Search For Games to BATTLE!";
     }
 
     // Update is called once per frame
@@ -38,6 +39,18 @@ public class SpinningTopsGameManager : MonoBehaviourPunCallbacks
         searchForGameButton.SetActive(false);
     }
 
+    public void OnQuitMatchButtonClicked()
+    {
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+        else
+        {
+            SceneLoader.Ins.LoadScene(NameScene.Scene_Lobby.ToString());
+        }
+    }
+
     #endregion
 
     #region PHOTON Callback Methods
@@ -47,9 +60,13 @@ public class SpinningTopsGameManager : MonoBehaviourPunCallbacks
         CreateAndJoinRoom();
     }
 
-    public override void OnJoinedRoom()
+ /*   public override void  Room()*/
+    public void  Room()
     {
-        if(PhotonNetwork.CurrentRoom.PlayerCount ==1)
+        adjust_Button.SetActive(false);
+        raycastCenter_Img.SetActive(false);
+
+        if (PhotonNetwork.CurrentRoom.PlayerCount ==1)
         {
             ui_InformText.text = "Joined to " + PhotonNetwork.CurrentRoom.Name + ". Waiting for other players ...";
 
@@ -68,7 +85,10 @@ public class SpinningTopsGameManager : MonoBehaviourPunCallbacks
         StartCoroutine(DeactivateAfterSeconds(ui_InformPanel, 2f));
     }
 
-
+    public override void OnLeftRoom()
+    {
+        SceneLoader.Ins.LoadScene(NameScene.Scene_Lobby.ToString());
+    }
     #endregion
 
     #region Private Methods
